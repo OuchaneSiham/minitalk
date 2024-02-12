@@ -6,7 +6,7 @@
 /*   By: souchane <souchane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:20:38 by souchane          #+#    #+#             */
-/*   Updated: 2024/02/05 16:32:33 by souchane         ###   ########.fr       */
+/*   Updated: 2024/02/12 09:52:31 by souchane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,12 @@ void	bit_convert(char *str, int pid)
 			if (str[i] & (128 >> x))
 			{
 				kill(pid, SIGUSR1);
+				   write(1, "1", 1);
 			}
 			else
 			{
 				kill(pid, SIGUSR2);
+				   write(1, "0", 1);
 			}
 			usleep(800);
 			x++;
@@ -50,9 +52,9 @@ int	main(int ac, char **av)
 			return (1);
 		}
 		pid = ft_atoi(av[1]);
-		if (pid < 0)
+		if (pid = 0)
 		{
-			ft_putstr("negative pid");
+			ft_putstr("wrong pid pid");
 			return (1);
 		}
 		bit_convert(av[2], pid);
